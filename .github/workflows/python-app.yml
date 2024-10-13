@@ -28,7 +28,14 @@ jobs:
     - name: Run the web application
       run: |
         nohup make run &
-        sleep 100
 
     - name: Verify the application is running
-      run: curl -f http://localhost:3000
+      run: |
+        for i in {1..30}; do
+          if curl -f http://localhost:3000; then
+            echo "Flask app is up!"
+            break
+          fi
+          echo "Waiting for Flask app to start..."
+          sleep 5
+        done
