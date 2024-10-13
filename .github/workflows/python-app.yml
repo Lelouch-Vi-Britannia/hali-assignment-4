@@ -28,7 +28,7 @@ jobs:
     - name: Run the web application
       run: |
         nohup make run &
-        sleep 10
+        sleep 100
 
     - name: Verify the application is running
       run: curl -f http://localhost:3000
