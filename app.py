@@ -25,7 +25,7 @@ vectorizer = TfidfVectorizer(stop_words=stop_words, max_features=1000)  # Limit 
 X = vectorizer.fit_transform(documents)
 
 # Apply SVD for dimensionality reduction
-svd = TruncatedSVD(n_components=100)  # Reduce to 100 dimensions
+svd = TruncatedSVD(n_components=100, random_state=42) # Reduce to 100 dimensions
 X_reduced = svd.fit_transform(X)
 
 def process_query(query):
